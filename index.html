@@ -1,5 +1,5 @@
 <body></body>
-
+<script src="chicago.png"></script>
 <script src="p5.js"></script>
 <script>
 function skyColor(){
@@ -17,8 +17,21 @@ function skyColor(){
    // bg = loadImage('chicago.png');
   }
   
+    const gifURL = 'chicago.png'
+  
+  function createChicago(x, y) {
+    const gif = document.createElement('img')
+    gif.src = gifURL
+    console.log(gif)
+    gif.style.position = 'absolute'
+    gif.style.top = y + 'px'
+    gif.style.left = x + 'px'
+    document.body.appendChild(gif)
+  }
+  
   function setup(){
   createCanvas(2048 , 942)
+    createGif(x, y)
   }
 
   function draw(){
