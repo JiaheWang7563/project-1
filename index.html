@@ -1,6 +1,11 @@
 <body></body>
 <!-- <script src="p5.js"></script> -->
 <script>
+  
+  function scale (number, inMin, inMax, outMin, outMax) {
+    return (number - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
+}
+  
   class WeatherGIF {
     constructor(settings) {
       this.x = settings.x || Math.random ()* window.innerWidth //add default values
@@ -79,10 +84,17 @@
   function draw() {
     requestAnimationFrame(draw)
     for (let i = 0; i < gifJar.length; i++) {
-   	 gifJar[i].fall()
+   	 gifJar[i].fall()  
+    }
+  }
+  
+  function updateWind(e){
+    for (let i = 0; i < gifJar.length; i++) {
+      gifJar[i].windDir = scale(e.x, 0, window.innerWidth, 0, 40)
     }
   }
 
   window.addEventListener('load', setup)
   window.addEventListener('load', draw)
+  window.addEventListener('mousemove',updateWind)
 </script>
