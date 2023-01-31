@@ -1,6 +1,6 @@
 <body></body>
 <script src="chicago.png"></script>
-<script src="p5.js"></script>
+<script src="../p5.min.js"></script>
 <script>
 function skyColor(){
   const r = Math.random()*255
@@ -17,11 +17,8 @@ function skyColor(){
    // bg = loadImage('chicago.png');
   }
   
-    const gifURL = 'chicago.png'
-  
   function createChicago(x, y) {
     const gif = document.createElement('img')
-    gif.src = gifURL
     console.log(gif)
     gif.style.position = 'absolute'
     gif.style.top = y + 'px'
@@ -30,8 +27,9 @@ function skyColor(){
   }
   
   function setup(){
+    createChicago()
   createCanvas(2048 , 942)
-    createGif(x, y)
+    createChicago(20, 50)
   }
 
   function draw(){
