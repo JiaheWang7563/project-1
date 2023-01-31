@@ -2,41 +2,41 @@
 <script src="chicago.png"></script>
 <script src="../p5.min.js"></script>
 <script>
-function skyColor(){
+  
+  function createChicago() {
+    const gif = document.createElement('img')
+    gif.src = 'chicago.png'
+    gif.style.position = 'absolute'
+    gif.style.top = 300 + 'px'
+    gif.style.left = 0 + 'px'
+    document.body.appendChild(gif)
+  }
+  
+  function skyColor(){
   const r = Math.random()*255
   const g = Math.random()*255
   const b = Math.random()*255
   const color = `rgb(${r},${g},${b})`
   return color
 }
+  
+  document.body.style.backgroundColor = skyColor() //why is it slow
 
-  let bg;
-  function background(){
-    const gif = document.createElement('img')
-    gif.src = 'chicago.png'
-   // bg = loadImage('chicago.png');
+  function groundColor(){
+      
   }
   
-  function createChicago(x, y) {
-    const gif = document.createElement('img')
-    console.log(gif)
-    gif.style.position = 'absolute'
-    gif.style.top = y + 'px'
-    gif.style.left = x + 'px'
-    document.body.appendChild(gif)
+  function weather(){
+    //add gifs of weather
   }
   
-  function setup(){
+    function setup(){
+    createCanvas(2048 , 942)
     createChicago()
-  createCanvas(2048 , 942)
-    createChicago(20, 50)
-  }
-
-  function draw(){
-      background(bg);
   }
   
-document.body.style.backgroundColor = skyColor()
+  window.addEventListener('load',setup)
+
 
 
 
