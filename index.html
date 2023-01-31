@@ -2,23 +2,29 @@
 <!-- <script src="p5.js"></script> -->
 <script>
   class WeatherGIF {
-    constructor(x, y, width, height, giftype) {
-      this.x = x
-      this.y = y
+    constructor(settings) {
+      this.x = settings.x || Math.random ()* window.innerWidth //add default values
+      this.y = settings.y || Math.random ()* window.innerHeight
+      this.windDir = settings.windDir || 10
       this.ele = document.createElement('img')
-      this.ele.src = giftype
+      this.ele.src = settings.giftype
       this.ele.style.position = 'absolute'
-      this.ele.style.top = y + 'px'
-      this.ele.style.left = x + 'px'
-      this.ele.width = width
-      this.ele.height = height
+      this.ele.style.top = this.y + 'px'
+      this.ele.style.left = this.x + 'px'
+      this.ele.width = settings.width || Math.random()*100 + 50
+      this.ele.height = settings.height || Math.random()*100 + 50 
       document.body.appendChild(this.ele)
     }
     fall() {
       this.y = this.y + 10
+      this.x = this.x + this.windDir
       this.ele.style.top = this.y + 'px'
+      this.ele.style.left = this.x + 'px'
       if (this.y > window.innerHeight) {
-        this.y = 0
+        this.y = - this.ele.height
+      }
+      if (this.x > window.innerWidth) {
+        this.x = - this.ele.width
       }
     }
   }
@@ -61,11 +67,10 @@
   //  gif1 = new WeatherGIF(20, 30, 20, 50, 'winky.gif')
  //   gif2 = new WeatherGIF(50, 150, 50, 40, 'winky.gif')
     for (let i = 0; i < 100; i++) {
-      const x = Math.random ()* window.innerWidth
-      const y = Math.random ()* window.innerHeight
-      const width = Math.random()*100 + 50
-      const height = Math.random()*100 + 50 
-			const g = new WeatherGIF(x, y, width, height, 'winky.gif')
+      
+			const g = new WeatherGIF({
+        giftype: 'winky.gif'
+      })
       gifJar.push(g)
     }
 
