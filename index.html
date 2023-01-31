@@ -1,43 +1,83 @@
 <body></body>
-<script src="chicago.png"></script>
-<script src="../p5.min.js"></script>
+<!-- <script src="p5.js"></script> -->
 <script>
-  
+  class WeatherGIF {
+    constructor(x, y, width, height, giftype) {
+      this.x = x
+      this.y = y
+      this.ele = document.createElement('img')
+      this.ele.src = giftype
+      this.ele.style.position = 'absolute'
+      this.ele.style.top = y + 'px'
+      this.ele.style.left = x + 'px'
+      this.ele.width = width
+      this.ele.height = height
+      document.body.appendChild(this.ele)
+    }
+    fall() {
+      this.y = this.y + 10
+      this.ele.style.top = this.y + 'px'
+      if (this.y > window.innerHeight) {
+        this.y = 0
+      }
+    }
+  }
+
+	const gifJar = []
+
+
   function createChicago() {
     const gif = document.createElement('img')
     gif.src = 'chicago.png'
     gif.style.position = 'absolute'
     gif.style.top = 300 + 'px'
     gif.style.left = 0 + 'px'
+    gif.style.bottom = 200 + 'px'
     document.body.appendChild(gif)
   }
-  
-  function skyColor(){
-  const r = Math.random()*255
-  const g = Math.random()*255
-  const b = Math.random()*255
-  const color = `rgb(${r},${g},${b})`
-  return color
-}
-  
+
+  function skyColor() {
+    const r = Math.random() * 255
+    const g = Math.random() * 255
+    const b = Math.random() * 255
+    const color = `rgb(${r},${g},${b})`
+    return color
+  }
+
   document.body.style.backgroundColor = skyColor() //why is it slow
 
-  function groundColor(){
-      
+  function groundColor() {
+
   }
-  
-  function weather(){
+
+  function weather() {
     //add gifs of weather
+    // snowis gifs slowly descending
+    //blizzard etc
   }
-  
-    function setup(){
-    createCanvas(2048 , 942)
+
+  function setup() {
     createChicago()
+  //  gif1 = new WeatherGIF(20, 30, 20, 50, 'winky.gif')
+ //   gif2 = new WeatherGIF(50, 150, 50, 40, 'winky.gif')
+    for (let i = 0; i < 100; i++) {
+      const x = Math.random ()* window.innerWidth
+      const y = Math.random ()* window.innerHeight
+      const width = Math.random()*100 + 50
+      const height = Math.random()*100 + 50 
+			const g = new WeatherGIF(x, y, width, height, 'winky.gif')
+      gifJar.push(g)
+    }
+
   }
-  
-  window.addEventListener('load',setup)
 
+  function draw() {
+    requestAnimationFrame(draw)
+    for (let i = 0; i < gifJar.length; i++) {
+   	 gifJar[i].fall()
+    }
+  }
 
-
-
+  window.addEventListener('load', setup)
+  window.addEventListener('load', draw)
 </script>
