@@ -1,8 +1,10 @@
 <body></body>
 <!-- <script src="p5.js"></script> -->
-<div class="slidecontainer">
+<!-- <div class="slidecontainer">
   <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-</div>
+</div> -->
+
+<button id="myBtn" type="button">What if Magritte's painting happened in Chicago?</button>
 <script>
   
   
@@ -14,10 +16,10 @@
     const gif = document.createElement('img')
     gif.src = 'magrittemen.gif'
     gif.style.position = 'absolute'
-    gif.style.top = 0 + 'px'
-    gif.style.left = 0 + 'px'
-    gif.style.bottom = 0 + 'px'
-    gif.style.width = window.innerWidth + 'px'
+    gif.style.top =  200 + 'px'
+    gif.style.left = 50 + 'px'
+    gif.style.bottom =  700 + 'px'
+    gif.style.width = window.innerWidth - 50+ 'px'
     document.body.appendChild(gif)
   }
   
@@ -33,11 +35,7 @@ slider.value = "50";
   
   document.body.appendChild(slider);
   
-  //written using chatgpt
-  slider.style.width = "100%";
-slider.style.height = "10px";
-slider.style.background = "#ddd";
-slider.style.opacity = "1";
+
   
   class WeatherGIF {
     constructor(settings) {
@@ -133,6 +131,10 @@ slider.style.opacity = "1";
   console.log("Slider value: ", slider.value);
 });
 
+    document.getElementById("myBtn").onclick=function(){
+    setup()
+  }
+  
   window.addEventListener('load', setup)
   window.addEventListener('load', draw)
   window.addEventListener('mousemove',updateWind)
