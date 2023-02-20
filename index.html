@@ -8,9 +8,9 @@
 <script>
   
   
-  function scale (number, inMin, inMax, outMin, outMax) {
-    return (number - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
-}
+//   function scale (number, inMin, inMax, outMin, outMax) {
+//     return (number - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
+// }
   
     function magritte1() {
     const gif = document.createElement('img')
@@ -87,7 +87,7 @@ slider.value = "50";
     return color
   }
 
-  document.body.style.backgroundColor = skyColor() //why is it slow
+  document.body.style.backgroundColor = skyColor() 
 
   function groundColor() {
 
@@ -111,7 +111,7 @@ slider.value = "50";
       })
       gifJar.push(g)
     }
-
+    document.getElementById("magritteMen").style.display='none';
   }
 
   function draw() {
@@ -127,15 +127,16 @@ slider.value = "50";
     }
   }
   
-  slider.addEventListener("input", function() {
-  console.log("Slider value: ", slider.value);
-});
+//   slider.addEventListener("input", function() {
+//   console.log("Slider value: ", slider.value);
+// });
 
     document.getElementById("myBtn").onclick=function(){
     setup()
+     
   }
   
-  window.addEventListener('load', setup)
+//  window.addEventListener('load', setup)
   window.addEventListener('load', draw)
   window.addEventListener('mousemove',updateWind)
 </script>
